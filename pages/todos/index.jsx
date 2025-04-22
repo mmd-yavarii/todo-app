@@ -1,7 +1,11 @@
-import React from 'react';
+import { useTodos } from '@/context/TodosProvider';
 
 function TodoList() {
-  return <div>TodoList</div>;
+  const [todos, dispatchTodos] = useTodos();
+
+  console.log(todos);
+
+  return <></>;
 }
 
 export default TodoList;
