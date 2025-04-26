@@ -12,7 +12,7 @@ function Layout({ children }) {
   return (
     <>
       <header className={styles.header}>
-        {path != '/todos' ? (
+        {path != '/todo-list' ? (
           <button onClick={() => router.back()}>
             <IoArrowBackOutline fontSize="1.3rem" />
           </button>
