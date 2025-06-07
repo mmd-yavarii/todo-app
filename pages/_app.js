@@ -1,13 +1,10 @@
-import TodosProvider from '@/context/TodosProvider';
-import Layout from '@/Layout/Layout';
-import '@/sass/global.scss';
+import Layout from '@/components/layout/Layout';
+import '../styles/global.scss';
 
 export default function App({ Component, pageProps }) {
   return (
     <Layout>
-      <TodosProvider>
-        <Component {...pageProps} />
-      </TodosProvider>
+      <Component {...pageProps} />
     </Layout>
   );
 }

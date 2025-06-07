@@ -1,0 +1,35 @@
+@import './mixins';
+@import './varables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: $color-background-base;
+  color: $color-text-primary;
+}
+
+input,
+button {
+  background-color: inherit;
+  border: 0;
+  outline: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  background-color: inherit;
+  cursor: default;
+  @include click-style;
+  @include mobile-first-res(768px) {
+    cursor: pointer;
+  }
+}
