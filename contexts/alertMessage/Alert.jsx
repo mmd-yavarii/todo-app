@@ -9,22 +9,34 @@ const AlertContext = createContext();
 
 export default function AlertProvider({ children }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [show, setShow] = useState(false);
   const [message, setMessage] = useState('hello');
   const [isError, setIsError] = useState(true);
 
   useEffect(() => {
     if (isVisible) {
-      let timeout = setTimeout(() => setIsVisible(false), 2000);
+      let timeout = setTimeout(() => {
+        setShow(false);
+      }, 2500);
+      return () => clearTimeout(timeout);
+    }
+  }, [show]);
+
+  useEffect(() => {
+    if (isVisible) {
+      let timeout = setTimeout(() => {
+        setIsVisible(false);
+      }, 2000);
       return () => clearTimeout(timeout);
     }
   }, [isVisible]);
 
   return (
-    <AlertContext.Provider value={{ setMessage, setIsError, setIsVisible }}>
+    <AlertContext.Provider value={{ setMessage, setIsError, setIsVisible, setShow }}>
       {children}
 
-      {isVisible && (
-        <div className={`${styles.container} ${isError ? styles.error : styles.success}`}>
+      {show && (
+        <div className={`${styles.container} ${isError ? styles.error : styles.success} ${isVisible ? styles.show : styles.hide}`}>
           <div>
             {isError ? <RiErrorWarningFill fontSize="1.3rem" /> : <IoCheckmarkCircleSharp fontSize="1.3rem" />}
             {message}
@@ -40,17 +52,18 @@ export default function AlertProvider({ children }) {
 }
 
 export function useAlert() {
-  const { setMessage, setIsError, setIsVisible } = useContext(AlertContext);
+  const { setMessage, setIsError, setIsVisible, setShow } = useContext(AlertContext);
 
   function showAlert(message, isError) {
     setMessage(message);
     setIsError(isError);
+    setShow(true);
     setIsVisible(true);
   }
 
   // how it works
   // const showAlert = useAlert();
-  // showAlert('hello mmdy', true);
+  // showAlert('message', true);
 
   return showAlert;
 }
