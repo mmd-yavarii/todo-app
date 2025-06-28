@@ -1,0 +1,13 @@
+.btnContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 10px 0;
+  padding: 10px;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+
+  button:last-child {
+    color: #ff0051;
+  }
+}

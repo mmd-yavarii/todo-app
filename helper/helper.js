@@ -12,4 +12,23 @@ const categories = [
   { value: 'other', id: 'cat_other' },
 ];
 
-export { categories };
+// change todo's status handler
+async function changeStatus(state, setState) {
+  setState(!state);
+  try {
+    const response = await fetch(`/api/change-status/${_id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(!status),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (!response.ok) {
+      setState(!state);
+    }
+  } catch (error) {
+    setState(!state);
+  }
+}
+
+export { categories, changeStatus };
