@@ -3,9 +3,11 @@ import { useState } from 'react';
 
 import styles from '@/styles/AddTodoPage.module.scss';
 import { useAlert } from '@/contexts/alertMessage/Alert';
+import { BeatLoader } from 'react-spinners';
 
 export default function AddTodo() {
   const showAlert = useAlert();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [form, setForm] = useState({
     title: '',
@@ -28,6 +30,7 @@ export default function AddTodo() {
       return;
     }
 
+    setIsLoading(true);
     const response = await fetch('/api/add-todo', {
       method: 'POST',
       body: JSON.stringify(form),
@@ -41,6 +44,7 @@ export default function AddTodo() {
     if (response.ok) {
       setForm({ title: '', description: '', category: '' });
     }
+    setIsLoading(false);
   }
 
   return (
@@ -61,7 +65,7 @@ export default function AddTodo() {
           ))}
         </select>
 
-        <button type="submit">Submit</button>
+        <button type="submit"> {isLoading ? <BeatLoader color="#fff" size="10px" /> : 'Submit'}</button>
       </form>
     </div>
   );

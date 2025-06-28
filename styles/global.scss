@@ -11,7 +11,8 @@
 body {
   background-color: $color-background-base;
   color: $color-text-primary;
-  overflow: hidden;
+  max-width: 450px;
+  margin: auto;
 }
 
 input,

@@ -1,2 +1,19 @@
+@import '../../styles/varables';
+@import '../../styles/mixins';
+
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $color-background;
+  padding: 10px;
+  display: flex;
+  border-bottom: 1px solid #dadada;
+
+  a {
+    background-color: $color-theme-primary;
+    color: #ffff;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
 }
