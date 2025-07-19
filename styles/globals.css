@@ -6,6 +6,7 @@
 html,
 body {
     max-width: 1000px;
+    margin: auto;
     overflow-x: hidden;
 }
 
@@ -43,9 +44,9 @@ a {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    margin: 200px auto;
+    margin: 300px auto;
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
 }
 .add-todo > * {
     width: 100%;
@@ -104,7 +105,10 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
     z-index: 1;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
@@ -117,6 +121,79 @@ input {
 .userInfo div button {
     color: red;
     border: none;
+    font-weight: 900;
     outline: none;
     background-color: transparent;
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+.todo a {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.todo span {
+    opacity: 0.4;
+    font-size: 0.9rem;
+}
+.pending,
+.done {
+    width: 25px;
+    height: 25px;
+    background-color: #ececec;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 8px;
+}
+.done {
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.done::after {
+    content: '✓';
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.addBtn {
+    background-color: dodgerblue;
+    color: white;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    font-size: 1.9rem;
+    font-weight: 900;
+}
+
+@media (max-width: 800px) {
+    a,
+    button {
+        cursor: default;
+    }
+}
+
+@media (min-width: 800px) {
+    a,
+    button {
+        cursor: pointer;
+    }
 }

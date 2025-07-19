@@ -1,3 +1,4 @@
+import TodoCard from '@/components/modules/TodoCard';
 import Todo from '@/models/Todo';
 import User from '@/models/User';
 import { verifyToken } from '@/utils/auth';
@@ -22,13 +23,21 @@ export default function Home({ info, userTodos }) {
     return (
         <>
             <div className="userInfo">
-                <h4>{info.email}</h4>
+                <h3>{info.email}</h3>
 
                 <div>
-                    <Link href="/add-todo">Add new todo</Link>
+                    <Link className="addBtn" href="/add-todo">
+                        +
+                    </Link>
                     <button onClick={logoutHandler}>Log out</button>
                 </div>
             </div>
+
+            {userTodos.length ? (
+                userTodos.map((i) => <TodoCard key={i._id} {...i} />)
+            ) : (
+                <p style={{ marginTop: '300px', textAlign: 'center' }}>There's no todo yet</p>
+            )}
         </>
     );
 }
@@ -48,7 +57,7 @@ export async function getServerSideProps(context) {
         await connectDb();
 
         const { _id: userId } = await User.findOne({ email: tokenVerification.email });
-        const userTodos = await Todo.find({ userId });
+        const userTodos = await Todo.find({ userId }).sort({ createdAt: -1 });
 
         return {
             props: {
