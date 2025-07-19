@@ -8,7 +8,7 @@ export default async function connectDb() {
 }
 
 // connect to db in api
-export async function connectDbInApi(req) {
+export async function connectDbInApi(res) {
     try {
         await connectDb();
     } catch (error) {
