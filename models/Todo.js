@@ -27,10 +27,6 @@ const TodoSchema = new Schema({
         default: () => Date.now(),
         immutable: true,
     },
-
-    maxAge: {
-        type: Date,
-    },
 });
 
 const Todo = models.Todo || model('Todo', TodoSchema);

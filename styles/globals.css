@@ -28,8 +28,8 @@ a {
     text-decoration: none;
 }
 
-/* form styles  */
 .form {
+    gap: 20px;
     width: 100vw;
     height: 100dvh;
     flex-direction: column;
@@ -37,6 +37,20 @@ a {
     align-items: center;
     justify-content: center;
 }
+
+.add-todo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin: 200px auto;
+    width: 100%;
+    max-width: 400px;
+}
+.add-todo > * {
+    width: 100%;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -44,16 +58,15 @@ form {
     width: 100%;
     max-width: 300px;
 }
-.form p {
-    margin-bottom: 20px;
-}
+
 form a {
     text-align: center;
     color: #003cff;
     text-decoration: underline;
     margin-top: 10px;
 }
-form button {
+form button,
+.add-todo button {
     background-color: dodgerblue;
     color: #fff;
     border: none;
@@ -85,4 +98,25 @@ input {
 }
 .inputSuccess:focus::placeholder {
     color: #0d7d2ff7;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    z-index: 1;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+.userInfo div {
+    display: flex;
+    gap: 20px;
+}
+.userInfo div button {
+    color: red;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
