@@ -23,7 +23,7 @@ function TodoCard({ title, completed, createdAt, _id }) {
 
     return (
         <div className="todo">
-            <Link href="">
+            <Link href={`/todo/${_id}`}>
                 {title} <span>{moment(createdAt).fromNow()}</span>
             </Link>
             <button onClick={() => setIsCompleted(!isCompleted)} className={isCompleted ? 'done' : 'pending '}></button>
